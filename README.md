@@ -26,6 +26,9 @@ Repository to practice scrapy at python
 
 cd [project-name]
 scrapy crawl [name-inside-class]
+
+ou então, cd scrapy
+e
 scrapy shell "http://quotes.toscrape.com/" ([url])
 
 [https://www.youtube.com/watch?v=2osL98z3w-Q&list=PLhTjy8cBISEqkN-5Ku_kXG4QW33sxQo0t&index=6](https://www.youtube.com/watch?v=2osL98z3w-Q&list=PLhTjy8cBISEqkN-5Ku_kXG4QW33sxQo0t&index=6)
