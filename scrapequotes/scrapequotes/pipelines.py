@@ -8,4 +8,5 @@
 
 class ScrapequotesPipeline(object):
     def process_item(self, item, spider):
+        print("pipeline :"+item['title'][0]+item['author'][0])
         return item

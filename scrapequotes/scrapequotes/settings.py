@@ -64,9 +64,10 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'scrapequotes.pipelines.ScrapequotesPipeline': 300,
-#}
+# quanto menor, maior a prioridade da pipeline
+ITEM_PIPELINES = {
+    'scrapequotes.pipelines.ScrapequotesPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
