@@ -4,7 +4,8 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-import sqlite3
+#import sqlite3
+import mysql.connector
 
 class ScrapequotesPipeline(object):
     # passando o que ta no database pra POO
@@ -15,13 +16,18 @@ class ScrapequotesPipeline(object):
         pass
 
     def create_connection(self):
-        self.conn = sqlite3.connect("sqlitemyquotes.db")
+        self.conn = mysql.connector.connect(
+            host = 'localhost',
+            user = 'root',
+            passwd = 'mysql876',
+            database = 'scrapyquotes'
+        )
         self.curr = self.conn.cursor()
     
     def create_table(self):
         # create only if table dont exists
-        self.curr.execute("""DROP TABLE IF EXISTS sqlitequotes_table""")
-        self.curr.execute("""create table sqlitequotes_table( title text,author text, tag text)""")
+        self.curr.execute("""DROP TABLE IF EXISTS quotes_tb""")
+        self.curr.execute("""create table quotes_tb( title text,author text, tag text)""")
 
 
     def process_item(self, item, spider):
@@ -31,7 +37,7 @@ class ScrapequotesPipeline(object):
 
     def store_db(self,item):
         #pega os conteúdos do scraper que estavam no yield
-        self.curr.execute("""insert into sqlitequotes_table values(?,?,? )""",(
+        self.curr.execute("""insert into quotes_tb values(%s,%s,%s )""",(
             item['title'][0],
             item['author'][0],
             item['tag'][0]
