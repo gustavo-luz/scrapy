@@ -6,7 +6,10 @@ from ..items import ScrapequotesItem
 class QuoteSpider (scrapy.Spider):
     name = 'quotes'
     #lista dos sites que quer fazer o scrapy
+    #main page
     start_urls = ['http://quotes.toscrape.com/']
+   
+   
 
     # quer so o título do site
     #o response tem o codigo fonte do site, é de lá que se extrai
@@ -31,3 +34,12 @@ class QuoteSpider (scrapy.Spider):
             # mostra como um dicionário
             # yield é como um return, mas ela é usada com gerador que é usado pelo scrapy behind the scenes
             yield items
+        #class li, dentro dela pega o atributo de href que é o link
+
+        
+        next_page = response.css('li.next a::attr(href)').get()
+         # encontrar o botao, o link, ir pro link ate que apareçam novas paginas
+        if next_page is not None: #se não tiver o botão next na página em questão
+            yield response.follow(next_page,callback=self.parse)
+            #metodo do scrapy em que se coloca a página e depois continua fazendo o parse até acabar, função recursiva 
+        
