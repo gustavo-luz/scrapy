@@ -27,7 +27,7 @@ Repository to practice scrapy at python
 cd [project-name]
 scrapy crawl [name-inside-class]
 
-ou então, cd scrapy
+or cd scrapy
 e
 scrapy shell "http://quotes.toscrape.com/" ([url])
 
@@ -35,20 +35,21 @@ scrapy shell "http://quotes.toscrape.com/" ([url])
 
 scrapy
 
+
 - scrapeamazon (project name)
     - spiders
 
         init
 
-    - settings.py: nome do bot, modulos que pode colocar, user agent (falar quem vc é, pode bypassar depois)
-        - robots.txt (leis da internet pra fazer scraping em um site, por ex ver [https://www.amazon.com/robots.txt](https://www.amazon.com/robots.txt), no entanto, no settings você pode colocar pro seu scraper seguir essas regras)
-        - concurrent_requests: máximos requests feitos ao mesmo tempo, cuidado ao colocar muito alto pq causa muitos pedidos e pode deixar mais lento ou fazer cair)
-        - AutoThrottle, pra cuidar do overload tambem
-    - items.py: coloca os campos
-
+    - settings.py: name of the bot, modules it can place, user agent (say who you are, you can bypass it later)
+        - robots.txt (Internet laws for scraping a website, eg see [https://www.amazon.com/robots.txt](https://www.amazon.com/robots.txt), on However, in the settings you can set your scraper to follow these rules)
+        - concurrent_requests: maximum requests made at the same time, be careful when setting it too high because it causes many requests and can make it slower or crash)
+        - AutoThrottle, to take care of the overload too
+    - items.py: put the fields
+    
     ![projeto%20scrapy%203308a06619854a099b905d96feec0d83/Untitled.png](projeto%20scrapy%203308a06619854a099b905d96feec0d83/Untitled.png)
 
-    - pipelines: depois de fazer o scraping, tem que store no json, sql, mongodb, esse pipeline faz isso, o que vai na pipeline vai ser gerenciado por ele
-    - middleware: cuida do q é adicionado a requisição, ex proxies no request, cuida da request e da resposta do website, fica no meio do scraping e do pipeline
+   - pipelines: after doing the scraping, you have to store it in json, sql, mongodb, this pipeline does that, what goes in the pipeline will be managed by it
+   - middleware: takes care of what is added to the request, ex proxies in the request, takes care of the request and the response from the website, is in the middle of scraping and the pipeline
 
-    [passos básico scraper](projeto%20scrapy%203308a06619854a099b905d96feec0d83/passos%20ba%CC%81sico%20scraper%20b394aa42c65b4e5ab6cebdea33c04bed.md)
+    [basic steps scraper](projeto%20scrapy%203308a06619854a099b905d96feec0d83/passos%20ba%CC%81sico%20scraper%20b394aa42c65b4e5ab6cebdea33c04bed.md)
